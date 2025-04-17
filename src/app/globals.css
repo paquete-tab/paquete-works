@@ -28,4 +28,10 @@ body {
 canvas {
   background-image:
     linear-gradient(to bottom right,#00873c,#005aa0,#181878);
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 2;
 }

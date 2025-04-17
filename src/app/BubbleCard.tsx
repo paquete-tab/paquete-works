@@ -53,7 +53,7 @@ const BubbleCard = (props: Props) => {
             new THREE.Vector3(0, -2, -6),
             new THREE.Vector3(-1, 0, -4),
             new THREE.Vector3(0, 1, -2),
-            new THREE.Vector3(1, -1, 0)
+            new THREE.Vector3(-0.5, 0, 0)
           ),
         ]}
       />
