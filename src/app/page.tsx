@@ -5,6 +5,8 @@ import { Canvas } from "@react-three/fiber"
 import BubbleCard from "./BubbleCard"
 import { Stars } from "@react-three/drei"
 import Header from "./Header"
+import Moon from "./Moon"
+import Saturn from "./Saturn"
 
 const Home: NextPage = () => {
   return(
@@ -32,6 +34,8 @@ const Home: NextPage = () => {
         <BubbleCard position={new THREE.Vector3(-3, 2, -5)} radius={0.6} texturePath={"/qiita-icon.png"} linkURL={"https://qiita.com/paquete"} />
         <BubbleCard position={new THREE.Vector3(-5, 0, -5)} radius={0.6} texturePath={"/nextjs-icon.png"} linkURL={""} />
         <Stars />
+        <Moon />
+        <Saturn />
       </Canvas>
     </div>
   )

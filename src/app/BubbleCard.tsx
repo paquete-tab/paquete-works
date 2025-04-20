@@ -11,7 +11,7 @@ type Props = {
 }
 
 const BubbleCard = (props: Props) => {
-  const bubbleCardRef = useRef<THREE.Mesh>(null!)
+  const bubbleCardRef = useRef<THREE.Group>(null!)
   const motionPathRef = useRef<MotionPathRef>(null!)
   const bubbleRef = useRef<THREE.Mesh>(null!)
   const cardRef = useRef<THREE.Mesh>(null!)
@@ -56,8 +56,9 @@ const BubbleCard = (props: Props) => {
             new THREE.Vector3(-0.5, 0, 0)
           ),
         ]}
+        damping={0.7}
       />
-      <mesh ref={bubbleCardRef}>
+      <group ref={bubbleCardRef}>
         <mesh
           position={props.position}
           onPointerOver={() => setHoveredOnBubble(true)}
@@ -95,7 +96,7 @@ const BubbleCard = (props: Props) => {
           <circleGeometry args={[0.8 * props.radius, 64]} />
           <meshStandardMaterial map={texture} side={THREE.DoubleSide} />
         </mesh>
-      </mesh>
+      </group>
     </Float>
   )
 }
