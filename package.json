@@ -15,6 +15,7 @@
     "three": "^0.175.0"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.12",
     "@eslint/eslintrc": "^3",
     "@react-three/drei": "^10.0.6",
     "@react-three/fiber": "^9.1.2",
