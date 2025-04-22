@@ -1,7 +1,7 @@
 import { JSX, RefObject, useRef, useState } from "react"
 import * as THREE from 'three'
 import { useFrame, useLoader} from "@react-three/fiber"
-import { Float, MotionPathControls, MotionPathRef, useCursor, useMotion } from "@react-three/drei"
+import { Float, MotionPathControls, MotionPathRef, useCursor } from "@react-three/drei"
 
 type Props = {
   texturePath: string,
@@ -20,7 +20,7 @@ const BubbleCard = ({ texturePath, linkURL, radius = 1, ...props } : Props) => {
   }
   const texture = useLoader(THREE.TextureLoader, texturePath)
 
-  useFrame((state, delta, xrFrame) => {
+  useFrame((state, delta) => {
     if (motionPathRef.current) {
       if (motionPathRef.current.motion.current < 0.99){
         motionPathRef.current.motion.current += 0.01
