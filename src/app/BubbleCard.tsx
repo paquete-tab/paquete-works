@@ -15,9 +15,7 @@ const BubbleCard = ({ texturePath, linkURL, radius = 1, ...props } : Props) => {
   const bubbleRef = useRef<THREE.Mesh>(null!)
   const cardRef = useRef<THREE.Mesh>(null!)
   const [hoveredOnBubble, setHoveredOnBubble] = useState<boolean>(false)
-  if (linkURL) {
-    useCursor(hoveredOnBubble)
-  }
+  useCursor(hoveredOnBubble, linkURL ? 'pointer' : 'default')
   const texture = useLoader(THREE.TextureLoader, texturePath)
 
   useFrame((state, delta) => {
