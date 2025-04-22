@@ -1,11 +1,12 @@
-import { useRef } from 'react';
+import { useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 
 const Moon = () => {
+  const { width } = useThree((state) => state.viewport)
 
   return (
     <group
-      position={[5,5,-20]}>
+      position={[width, 8, -25]}>
       <mesh>
         <sphereGeometry args={[1, 64, 64]} />
         <meshPhysicalMaterial

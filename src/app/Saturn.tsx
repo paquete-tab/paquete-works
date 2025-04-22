@@ -1,10 +1,12 @@
 import * as THREE from 'three'
 import { useRef, useState } from 'react'
+import { useThree } from '@react-three/fiber'
 
 const Saturn = () => {
   const saturnRef = useRef<THREE.Group>(null!)
   const [pointerDown, setPointerDown] = useState<boolean>(false)
   const [prevMouse, setPrevMouse] = useState({ x: 0, y: 0 })
+  const {width} = useThree((state) => state.viewport)
   const onPointerMove = (event: PointerEvent) => {
     if (pointerDown) {
       const deltaX = event.clientX - prevMouse.x
@@ -22,7 +24,7 @@ const Saturn = () => {
   return (
     <group
       ref={saturnRef}
-      position={[12,5,-20]}
+      position={[width * 2.0,5,-20]}
       rotation={[Math.PI / 2, -Math.PI / 4, Math.PI / 2]}
       onPointerDown={(event: PointerEvent) => {
           setPrevMouse({ x: event.clientX, y: event.clientY })

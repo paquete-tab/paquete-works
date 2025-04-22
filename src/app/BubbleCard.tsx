@@ -2,7 +2,6 @@ import { JSX, RefObject, useRef, useState } from "react"
 import * as THREE from 'three'
 import { useFrame, useLoader} from "@react-three/fiber"
 import { Float, MotionPathControls, MotionPathRef, useCursor, useMotion } from "@react-three/drei"
-import { string } from "three/tsl"
 
 type Props = {
   texturePath: string,
