@@ -2,23 +2,24 @@ import { JSX, RefObject, useRef, useState } from "react"
 import * as THREE from 'three'
 import { useFrame, useLoader} from "@react-three/fiber"
 import { Float, MotionPathControls, MotionPathRef, useCursor, useMotion } from "@react-three/drei"
+import { string } from "three/tsl"
 
 type Props = {
-  position: THREE.Vector3,
-  radius: number,
   texturePath: string,
-  linkURL: string,
-}
+  linkURL?: string | null,
+  radius?: number,
+} & JSX.IntrinsicElements['mesh']
 
-const BubbleCard = (props: Props) => {
+const BubbleCard = ({ texturePath, linkURL, radius = 1, ...props } : Props) => {
   const bubbleCardRef = useRef<THREE.Group>(null!)
   const motionPathRef = useRef<MotionPathRef>(null!)
   const bubbleRef = useRef<THREE.Mesh>(null!)
   const cardRef = useRef<THREE.Mesh>(null!)
   const [hoveredOnBubble, setHoveredOnBubble] = useState<boolean>(false)
-  const [hoveredOnCard, setHoveredOnCard] = useState<boolean>(false)
-  useCursor(hoveredOnBubble)
-  const texture = useLoader(THREE.TextureLoader, props.texturePath)
+  if (linkURL) {
+    useCursor(hoveredOnBubble)
+  }
+  const texture = useLoader(THREE.TextureLoader, texturePath)
 
   useFrame((state, delta, xrFrame) => {
     if (motionPathRef.current) {
@@ -60,12 +61,12 @@ const BubbleCard = (props: Props) => {
       />
       <group ref={bubbleCardRef}>
         <mesh
-          position={props.position}
+          {...props}
           onPointerOver={() => setHoveredOnBubble(true)}
           onPointerOut={() => setHoveredOnBubble(false)}
           ref={bubbleRef}
         >
-          <sphereGeometry args={[props.radius, 64, 64]} />
+          <sphereGeometry args={[radius, 64, 64]} />
           <meshPhysicalMaterial
             color="#c0c0c0"
             metalness={0}
@@ -83,17 +84,15 @@ const BubbleCard = (props: Props) => {
           />
         </mesh>
         <mesh
-          position={props.position}
-          onPointerOver={() => setHoveredOnCard(true)}
-          onPointerOut={() => setHoveredOnCard(false)}
+          {...props}
           onClick={() => {
-            if (window !== undefined) {
-              window.open(props.linkURL, "_blank")
+            if (linkURL && window !== undefined) {
+              window.open(linkURL, "_blank")
             }
           }}
           ref={cardRef}
         >
-          <circleGeometry args={[0.8 * props.radius, 64]} />
+          <circleGeometry args={[0.8 * radius, 64]} />
           <meshStandardMaterial map={texture} side={THREE.DoubleSide} />
         </mesh>
       </group>

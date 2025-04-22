@@ -22,8 +22,8 @@ const Saturn = () => {
   return (
     <group
       ref={saturnRef}
-      position={[1,-2,-20]}
-      rotation={[1,1,1]}
+      position={[12,5,-20]}
+      rotation={[Math.PI / 2, -Math.PI / 4, Math.PI / 2]}
       onPointerDown={(event: PointerEvent) => {
           setPrevMouse({ x: event.clientX, y: event.clientY })
           setPointerDown(true)
@@ -34,11 +34,16 @@ const Saturn = () => {
     >
       <mesh>
         <sphereGeometry args={[2, 64, 64]} />
-        <meshNormalMaterial />
+        <meshPhysicalMaterial
+          color={"#cbb994"}
+        />
       </mesh>
       <mesh>
         <ringGeometry args={[2.5, 3.5, 64]} />
-        <meshNormalMaterial side={THREE.DoubleSide} />
+        <meshPhysicalMaterial 
+          color={"#897858"}
+          side={THREE.DoubleSide}
+        />
       </mesh>
     </group>
   )

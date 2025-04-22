@@ -26,8 +26,6 @@ body {
 }
 
 canvas {
-  height: "100%";
-  width: "100%";
   background-image:
     linear-gradient(to bottom right,#00873c,#005aa0,#181878);
   z-index: 1;
