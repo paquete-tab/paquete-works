@@ -51,7 +51,12 @@ const ThreeCanvas = () => {
         <Scroll html style={{ width: "100%" }}>
           <div style={{ width: '40vw', position: 'absolute', top: '0.5vh', left: '2vw', display: 'flex', flexFlow: 'column' }}>
             <h1 style={{ fontWeight: 'bold', fontSize: 'clamp(2.0rem, 10vw, 20rem)', color: "#000000" }}>Links</h1>
-            <p style={{ fontWeight: 'bold', fontSize: 'clamp(1.2rem, 2vw, 1.7rem)', color: "#000000" }}>GitHub, Qiitaと個人開発したReactアプリのリンクです</p>
+            <div style={{ fontWeight: 'bold', fontSize: 'clamp(1.2rem, 2vw, 1.7rem)', color: "#000000" }}>
+              <span style={{ display: "inline-block" }}>GitHub, Qiitaと</span>
+              <span style={{ display: "inline-block" }}>個人開発した</span>
+              <span style={{ display: "inline-block" }}>Reactアプリの</span>
+              <span style={{ display: "inline-block" }}>リンクです</span>
+            </div>
           </div>
           <h1 style={{ position: 'absolute', top: '110vh', left: '2vw', fontWeight: 'bold', fontSize: 'clamp(2.0rem, 7vw, 20rem)', color: "#000000" }}>Tech stacks</h1>
           <h1 style={{ position: 'absolute', top: '220vh', left: '2vw', fontWeight: 'bold', fontSize: 'clamp(2.0rem, 7vw, 20rem)', color: "#000000" }}>Profile</h1>
